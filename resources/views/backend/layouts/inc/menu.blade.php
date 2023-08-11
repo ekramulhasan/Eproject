@@ -10,17 +10,17 @@
       <li>
         <a href="#products" data-href="Products.html">
           <i data-cs-icon="cupcake" class="icon" data-cs-size="18"></i>
-          <span class="label">Products</span>
+          <span class="label">Category</span>
         </a>
         <ul id="products">
           <li>
-            <a href="Products.List.html">
-              <span class="label">List</span>
+            <a href="{{ route('category.index') }}">
+              <span class="label">Category List</span>
             </a>
           </li>
           <li>
-            <a href="Products.Detail.html">
-              <span class="label">Detail</span>
+            <a href="{{ route('category.create') }}">
+              <span class="label">Add Category</span>
             </a>
           </li>
         </ul>

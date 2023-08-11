@@ -67,24 +67,46 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $category_update = category::findOrFail($id);
 
-        return $category_update;
+        $category_update = category::whereSlug($id)->first();
+        return view('backend.category.edit', compact('category_update'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $slug)
+
     {
-        //
+
+        $update_category = category::whereSlug($slug)->first();
+
+        $request->validate([
+
+            'update_category' => 'bail|required|string|max:255',
+
+        ]);
+
+        $update_category->update([
+
+            'title' => $request->update_category,
+            'slug' =>Str::slug($request->update_category),
+            'isActive' => $request->filled('is_active')
+        ]);
+
+        Toastr::success('successfully update category');
+        return redirect()->route('category.index');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $slug)
     {
-        //
+        $delete_category = category::whereSlug($slug)->first();
+        $delete_category->delete();
+        Toastr::success('successfully delete category');
+        return back();
     }
 }
