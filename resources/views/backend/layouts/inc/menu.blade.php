@@ -28,17 +28,17 @@
       <li>
         <a href="#orders" data-href="Orders.html">
           <i data-cs-icon="cart" class="icon" data-cs-size="18"></i>
-          <span class="label">Orders</span>
+          <span class="label">Testimonial</span>
         </a>
         <ul id="orders">
           <li>
-            <a href="Orders.List.html">
-              <span class="label">List</span>
+            <a href="{{ route('testimonial.index') }}">
+              <span class="label">Testimonial List</span>
             </a>
           </li>
           <li>
-            <a href="Orders.Detail.html">
-              <span class="label">Detail</span>
+            <a href="{{ route('testimonial.create') }}">
+              <span class="label">Create Testimonial</span>
             </a>
           </li>
         </ul>

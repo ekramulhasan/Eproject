@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Testimonial;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
+use Intervention\Image\Facades\Image;
 
 class TestimonialController extends Controller
 {
@@ -13,7 +16,7 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-      $testimonial_data = Testimonial::latest('id')->select(['id', 'client_name', 'client_slug' ,'client_designation', 'client_msg', 'client_img', 'updated_at'])->paginate(5);
+      $testimonial_data = Testimonial::latest('id')->select(['id', 'client_name', 'client_slug' ,'client_designation', 'client_msg', 'client_img', 'updated_at'])->paginate();
       return view('backend.testimonial.indext',compact('testimonial_data'));
     }
 
@@ -22,7 +25,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.testimonial.create');
     }
 
     /**
@@ -30,7 +33,34 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+
+            'client_name' => 'bail|required|string|max:255',
+            'client_designation' => 'bail|required|string|max:255',
+            'client_msg' => 'bail|required|string',
+            'client_img' => 'nullable|image'
+
+        ]);
+
+        $testimonial = Testimonial::create([
+
+            'client_name' => $request->client_name,
+            'client_slug' => Str::slug($request->client_name),
+            'client_designation' => $request->client_designation,
+            'client_msg' => $request->client_msg
+
+        ]);
+
+        $this->img_upload($request, $testimonial->id);
+
+        Toastr::success('successfully added new testimonial');
+        return redirect()->route('testimonial.index');
+
+        // dd($request);
+        // return $request;
+
+
     }
 
     /**
@@ -63,5 +93,41 @@ class TestimonialController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+    public function img_upload($request, $item_id){
+
+      $client_data =  Testimonial::findorFail($item_id);
+
+    //   dd($client_data);
+
+    if ($request->hasFile('client_img')) {
+
+        if ($client_data->client_img != 'default-client.jpg') {
+
+            $imgLoadPath = 'public/uploads/testimonial/';
+            $old_path = $imgLoadPath.$client_data->client_img;
+
+            unlink(base_path($old_path));
+        }
+
+
+        $photo_path = 'public/assets/uploads/testimonial/';
+        $upload_path = $request->file('client_img');
+        $img_name = $client_data->id.'.'.$upload_path->getClientOriginalExtension();
+        $new_photo_path = $photo_path.$img_name;
+
+        Image::make($upload_path)->resize(56,56)->save(base_path($new_photo_path),40); //40 mean jpg exten convert
+
+        $check = $client_data->update([
+
+            'client_img' => $img_name,
+
+        ]);
+
+    }
+
+
     }
 }

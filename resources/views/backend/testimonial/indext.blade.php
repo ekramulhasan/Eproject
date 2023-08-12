@@ -38,11 +38,11 @@
 
             <div class="table-responsive my-2">
 
-                <table class="table table-bordered table-striped" client_slug="my_table">
+                <table class="table table-bordered table-striped" id="my_table">
 
                     <thead>
                         <tr>
-                            <th scope="col">client_slug</th>
+                            <th scope="col">ID</th>
                             <th scope="col">Client Name</th>
                             <th scope="col">Client Designation</th>
                             <th scope="col">Client Img</th>
@@ -58,7 +58,12 @@
                                 <td scope="row">{{ $testimonial_data->firstItem() + $loop->index }}</td>
                                 <td>{{ $value->client_name }}</td>
                                 <td>{{ $value->client_designation }}</td>
-                                <td>{{ $value->client_img }}</td>
+                                <td>
+
+                                    <img src="{{ asset('assets/uploads/testimonial') }}/{{ $value->client_img }}"
+                                        alt="" class="img-fluid rounded-circle">
+
+                                </td>
                                 <td>{{ $value->updated_at->format('d M Y') }}</td>
                                 <td>
 
