@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Testimonial;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -25,7 +27,8 @@ class DatabaseSeeder extends Seeder
        $this->call([
 
             UserSeeder::class,
-            CategorySeeder::class
+            CategorySeeder::class,
+            Testimonial::class
 
        ]);
 

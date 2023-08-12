@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\DashbordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Models\Testimonial;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,14 +35,15 @@ Route::prefix('admin/')->group(function(){
 
     Route::middleware(['auth'])->group(function () {
 
-        // Route::get('/dashbord',[DashbordController::class,'dashbord'])->name('admin.dashbord');
-        Route::get('/category',[DashbordController::class,'dashbord'])->name('admin.dashbord');
+        Route::get('/dashbord',[DashbordController::class,'dashbord'])->name('admin.dashbord');
+        // Route::get('/category',[DashbordController::class,'dashbord'])->name('admin.dashbord');
 
     });
 
 
     //Category Resource
     Route::resource('category',CategoryController::class);
+    Route::resource('testimonial',TestimonialController::class);
 
 
 });
