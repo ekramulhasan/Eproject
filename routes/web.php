@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Models\Testimonial;
@@ -20,8 +21,15 @@ use App\Models\Testimonial;
 
 
 
-Route::get('/', function () {
-    return view('frontend.pages.home');
+// Route::get('/', function () {
+//     return view('frontend.pages.home');
+// });
+
+
+Route::prefix('')->group(function(){
+
+    Route::get('/', [HomeController::class,'home'])->name('home');
+
 });
 
 
