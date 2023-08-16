@@ -6,6 +6,8 @@ use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
+use App\Models\Product;
 use App\Models\Testimonial;
 
 /*
@@ -52,7 +54,7 @@ Route::prefix('admin/')->group(function(){
     //Category Resource
     Route::resource('category',CategoryController::class);
     Route::resource('testimonial',TestimonialController::class);
-
+    Route::resource('products',ProductController::class);
 
 });
 

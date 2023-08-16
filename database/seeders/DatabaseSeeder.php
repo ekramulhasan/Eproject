@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
 
             UserSeeder::class,
             CategorySeeder::class,
-            Testimonial::class
+            Testimonial::class,
+            ProductSeeder::class,
 
        ]);
 

@@ -8,11 +8,11 @@
         </a>
       </li>
       <li>
-        <a href="#products" data-href="Products.html">
+        <a href="#category" data-href="Products.html">
           <i data-cs-icon="cupcake" class="icon" data-cs-size="18"></i>
           <span class="label">Category</span>
         </a>
-        <ul id="products">
+        <ul id="category">
           <li>
             <a href="{{ route('category.index') }}">
               <span class="label">Category List</span>
@@ -25,6 +25,28 @@
           </li>
         </ul>
       </li>
+
+
+      <li>
+        <a href="#products" data-href="Products.html">
+          <i data-cs-icon="cupcake" class="icon" data-cs-size="18"></i>
+          <span class="label">Product</span>
+        </a>
+        <ul id="products">
+          <li>
+            <a href="{{ route('products.index') }}">
+              <span class="label">Product List</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('products.create') }}">
+              <span class="label">Add Product</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      
       <li>
         <a href="#orders" data-href="Orders.html">
           <i data-cs-icon="cart" class="icon" data-cs-size="18"></i>

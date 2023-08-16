@@ -9,7 +9,7 @@ Dashbord
 <div class="row">
 
     <div class="col-12 mt-3">
-        <h1>this is dashbord!</h1>
+        <h1>this is dashboard!</h1>
     </div>
 
 </div>

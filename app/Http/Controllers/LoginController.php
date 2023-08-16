@@ -19,7 +19,7 @@ class LoginController extends Controller
         $request->validate([
 
             'email' => 'bail|required|string|max:255',
-            'password' => 'bail|required|string|min:4'
+            'password' => 'bail|required|string|max:4'
 
         ]);
 
