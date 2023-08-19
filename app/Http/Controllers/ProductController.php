@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\UpdateProduct;
+use App\Models\ProductImage;
 use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
@@ -39,6 +40,8 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
 
+    // dd($request->all());
+
      $products = Product::create([
 
             'category_id' => $request->category_id,
@@ -55,6 +58,7 @@ class ProductController extends Controller
         ]);
 
         $this->img_upload($request,$products->id);
+        $this->multiple_img_upload($request, $products->id);
 
         Toastr::success('successfully added new product');
         return redirect()->route('products.index');
@@ -101,7 +105,7 @@ class ProductController extends Controller
         ]);
 
         $this->img_upload($request,$update_product->id);
-
+        $this->multiple_img_upload($request, $update_product->id);
         Toastr::success('successfully update the product');
         return redirect()->route('products.index');
 
@@ -156,4 +160,59 @@ class ProductController extends Controller
 
 
       }
+
+
+      public function multiple_img_upload($request, $product_id){
+
+
+        if($request->hasFile('multiple_product_img')){
+
+            $multiple_images =  ProductImage::where('product_id',$product_id)->get();
+
+            foreach ($multiple_images as $value) {
+
+                if ($multiple_images->product_multiple_img_name != 'default-img.jpg') {
+
+                    $file_location = 'public/assets/uploads/products/multiple_photo';
+                    $old_img = $file_location.$value->product_multiple_img_name;
+
+                    unlink(base_path($old_img));
+
+                }
+
+                // delete old value from table
+                $multiple_images->delete();
+        }
+
+
+        // assign a flag variable
+        $flag = 1;
+
+
+        foreach ($request->file('multiple_product_img') as $value) {
+
+            $file_location = 'public/assets/uploads/products/';
+            $new_img_name = $product_id.'-'.$flag.'.'.$value->getClientOriginalExtension();
+            $new_file_loaction = $file_location.$new_img_name;
+
+            Image::make($value)->resize(600,622)->save(base_path($new_file_loaction), 40);
+
+            ProductImage::create([
+
+                'product_id' => $product_id,
+                'product_multiple_img_name' => $new_img_name,
+
+            ]);
+
+            $flag++;
+
+
+        }
+
+
+
+      }
+
+
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,11 @@ class HomeController extends Controller
         $testimonial = Testimonial::where('is_active',1)->latest('id')->limit(3)->select(['id','client_name', 'client_designation', 'client_msg', 'client_img'])->get();
 
         // return $testimonial;
-        return view('frontend.pages.home', compact('testimonial'));
+        // return view('frontend.pages.home', compact('testimonial'));
+
+        $product = Product::where('is_active',1)->latest('id')->select('id', 'title', 'slug', 'price', 'product_stock', 'product_rating', 'product_img')->paginate(10);
+        return view('frontend.pages.home', compact('testimonial', 'product'));
+
+
     }
 }

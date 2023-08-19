@@ -32,7 +32,8 @@ class UpdateProduct extends FormRequest
             'short_description' => 'bail|nullable|string',
             'long_description' => 'bail|nullable|string',
             'additional_info' => 'bail|nullable|string',
-            'product_img' => 'bail|required|image|max:1024'
+            'product_img' => 'bail|required|image|max:1024',
+            // 'multiple_product_img' => 'bail|nullable|image|max:3072',
 
         ];
     }

@@ -244,6 +244,19 @@
                             @enderror
                           </div>
 
+                          <div class="mb-3">
+                            <label for="multiple_product_img" class="form-label">Multiple Image</label>
+                            <input class="form-control @error('multiple_product_img')
+                                is-invalid
+                            @enderror" type="file" id="multiple_product_img" name="multiple_product_img[]" multiple>
+
+                            @error('multiple_product_img')
+
+                                <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
+
+                            @enderror
+                          </div>
+
                           <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="category_check" role="switch" name="is_active" checked>
                             <label class="form-check-label" for="category_check">Active/Inactive</label>

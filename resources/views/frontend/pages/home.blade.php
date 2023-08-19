@@ -11,6 +11,7 @@ Home
 @include('frontend.pages.widgets.feature')
 @include('frontend.pages.widgets.countDown')
 @include('frontend.pages.widgets.productArea')
+@include('frontend.pages.widgets.ourProduct')
 @include('frontend.pages.widgets.testamonial')
 
 @include('frontend.pages.widgets.newLetter')
