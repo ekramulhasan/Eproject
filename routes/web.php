@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -30,7 +31,13 @@ use App\Models\Testimonial;
 
 Route::prefix('')->group(function(){
 
+
     Route::get('/', [HomeController::class,'home'])->name('home');
+    Route::get('shop',[HomeController::class, 'shopePage'])->name('shop.page');
+    Route::get('/single-product/{product_slug}',[HomeController::class,'productDetails'])->name('productDetails.page');
+    Route::get('/cart-page',[CartController::class,'cartPage'])->name('cart.page');
+    Route::post('addTocart/{product_slug}',[CartController::class,'addTocart'])->name('addTo.cart');
+
 
 });
 
