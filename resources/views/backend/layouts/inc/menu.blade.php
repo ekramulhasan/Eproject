@@ -46,7 +46,7 @@
         </ul>
       </li>
 
-      
+
       <li>
         <a href="#orders" data-href="Orders.html">
           <i data-cs-icon="cart" class="icon" data-cs-size="18"></i>
@@ -133,9 +133,9 @@
         </a>
       </li>
       <li>
-        <a href="Discount.html">
+        <a href="{{ route('coupon.create') }}">
           <i data-cs-icon="tag" class="icon" data-cs-size="18"></i>
-          <span class="label">Discount</span>
+          <span class="label">Coupon</span>
         </a>
       </li>
       <li>

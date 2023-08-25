@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\Coupon;
+use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\Frontend\CartController;
@@ -37,7 +39,7 @@ Route::prefix('')->group(function(){
     Route::get('/single-product/{product_slug}',[HomeController::class,'productDetails'])->name('productDetails.page');
     Route::get('/cart-page',[CartController::class,'cartPage'])->name('cart.page');
     Route::post('addTocart/{product_slug}',[CartController::class,'addTocart'])->name('addTo.cart');
-
+    Route::get('remove-item/{cart_id}',[CartController::class,'removeFromcart'])->name('remove_item');
 
 });
 
@@ -62,7 +64,7 @@ Route::prefix('admin/')->group(function(){
     Route::resource('category',CategoryController::class);
     Route::resource('testimonial',TestimonialController::class);
     Route::resource('products',ProductController::class);
-
+    Route::resource('coupon', CouponController::class);
 });
 
 

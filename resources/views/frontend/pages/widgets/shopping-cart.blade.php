@@ -38,7 +38,11 @@ cart page
                                         <input type="text" value="{{ $value->quantity }}">
                                     <div class="dec qtybutton">-</div><div class="inc qtybutton">+</div></td>
                                     <td class="total">{{ $value->price*$value->quantity  }}</td>
-                                    <td class="remove"><i class="fa fa-times"></i></td>
+                                    <td class="remove">
+
+                                        <a href="{{ route('remove_item',[$value->id]) }}"><i class="fa fa-times"></i></a>
+
+                                    </td>
                                 </tr>
 
                             @endforeach
@@ -51,9 +55,9 @@ cart page
                         <div class="col-xl-4 col-lg-5 col-md-6 ">
                             <div class="cartcupon-wrap">
                                 <ul class="d-flex">
-                                    <li>
+                                    {{-- <li>
                                         <button>Update Cart</button>
-                                    </li>
+                                    </li> --}}
                                     <li><a href="shop.html">Continue Shopping</a></li>
                                 </ul>
                                 <h3>Cupon</h3>

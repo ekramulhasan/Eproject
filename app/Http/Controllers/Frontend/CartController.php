@@ -49,4 +49,14 @@ class CartController extends Controller
         return back();
 
     }
+
+
+    public function removeFromcart($cart_id){
+
+        \Cart::remove($cart_id);
+
+        Toastr::info('delete item');
+        return back();
+
+    }
 }
