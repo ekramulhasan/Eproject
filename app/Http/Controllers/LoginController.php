@@ -37,7 +37,7 @@ class LoginController extends Controller
         }
 
 
-        return redirect()->withErrors([
+        return back()->withErrors([
 
             'email' => 'your mail is invalid'
         ])->onlyInput('email');
