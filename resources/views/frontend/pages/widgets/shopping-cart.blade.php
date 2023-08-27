@@ -14,7 +14,7 @@ cart page
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form action="http://themepresss.com/tf/html/tohoney/cart">
+
                     <table class="table-responsive cart-wrap">
                         <thead>
                             <tr>
@@ -63,23 +63,47 @@ cart page
                                 <h3>Cupon</h3>
                                 <p>Enter Your Cupon Code if You Have One</p>
                                 <div class="cupon-wrap">
-                                    <input type="text" placeholder="Cupon Code">
-                                    <button>Apply Cupon</button>
+
+                                    <form action="{{ route('coupon.apply') }}" method="post">
+                                        @csrf
+
+                                        <input type="text" placeholder="Cupon Code" name="coupon_code">
+                                        <button type="submit">Apply Cupon</button>
+
+                                    </form>
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-3 offset-xl-5 col-lg-4 offset-lg-3 col-md-6">
                             <div class="cart-total text-right">
                                 <h3>Cart Totals</h3>
+
+                                @if (Session::has('coupon'))
+
+                                <a class="p-1" href="{{ route('coupon.remove',['coupon_name']) }}"><i class="fa fa-times"></i></a>
+
+                                <b>{{ Session::get('coupon')['coupon_name'] }}</b> is Applied
+                                @endif
                                 <ul>
-                                    <li><span class="pull-left">Subtotal </span>${{ $subTotal }}</li>
-                                    <li><span class="pull-left"> Total </span> ${{ $subTotal }}</li>
+
+                                    @if (Session::has('coupon'))
+
+                                        <li><span class="pull-left">Discount Amount: </span>${{ Session::get('coupon')['discount_amount'] }} </li>
+                                        <li><span class="pull-left">Total: </span>${{ Session::get('coupon')['balance']  }} <del class="text-danger">{{ Session::get('coupon')['cart_total']  }}</del> </li>
+
+                                    @else
+                                        <li><span class="pull-left">Subtotal </span>${{ $subTotal }}</li>
+                                        <li><span class="pull-left">Total </span> ${{ $subTotal }}</li>
+                                    @endif
+
+
                                 </ul>
                                 <a href="checkout.html">Proceed to Checkout</a>
                             </div>
                         </div>
                     </div>
-                </form>
+
             </div>
         </div>
     </div>

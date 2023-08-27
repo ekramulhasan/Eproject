@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Coupon;
 use App\Models\Product;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
-
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -57,6 +60,67 @@ class CartController extends Controller
 
         Toastr::info('delete item');
         return back();
+
+    }
+
+    public function couponApply(Request $request){
+
+        // dd($request->all());
+
+        if(!Auth::check()){
+            Toastr::error('must be needed login');
+            return redirect()->route('login.page');
+        }
+
+       $check = Coupon::where('coupon_name', $request->coupon_code)->first();
+
+       if (Session::get('coupon')) {
+
+        Toastr::error('Already applied this coupon!!!');
+        return redirect()->back();
+
+       }
+
+       if ($check !=null) {
+
+            $check_validity = $check->validity_till > Carbon::now()->format('Y-m-d');
+
+            if ($check_validity) {
+
+                Session::put('coupon',[
+
+                    'coupon_name' => $check->coupon_name,
+                    'discount_amount' => (\Cart::getSubTotal() * $check->discount_amount)/100,
+                    'cart_total' => \Cart::getSubTotal(),
+                    'balance' => \Cart::getSubTotal() - (\Cart::getSubTotal() * $check->discount_amount)/100
+
+                ]);
+
+                Toastr::success('successfully coupon code applied !!!');
+                return redirect()->back();
+            }
+
+            else {
+                Toastr::error('coupon code expire');
+                return redirect()->back();
+            }
+
+        }
+
+        else {
+            Toastr::error('invalid coupon code');
+            return redirect()->back();
+        }
+
+
+    }
+
+
+    public function couponRemove($coupon_name){
+
+        Session::forget('coupon');
+        Toastr::success('successfully coupon remove');
+        return redirect()->back();
 
     }
 }
