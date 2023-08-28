@@ -60,7 +60,7 @@
                                     <li><a href="{{ route('shop.page') }}">Shop Page</a></li>
                                     <li><a href="">Product Details</a></li>
                                     <li><a href="{{ route('cart.page') }}">Shopping cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="{{ route('cutomer.checkout') }}">Checkout</a></li>
                                     <li><a href="wishlist.html">Wishlist</a></li>
                                 </ul>
                             </li>
