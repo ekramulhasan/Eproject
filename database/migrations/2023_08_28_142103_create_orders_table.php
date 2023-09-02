@@ -12,8 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
+
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('billing_id')->constrained('billings')->onDelete('cascade');
+            $table->unsignedInteger('sub_total');
+            $table->unsignedInteger('discount_amount')->default(0);
+            $table->string('coupon_name')->nullable();
+            $table->unsignedInteger('total');
             $table->timestamps();
+            $table->softDeletes();
+            
         });
     }
 

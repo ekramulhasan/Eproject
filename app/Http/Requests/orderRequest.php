@@ -24,7 +24,7 @@ class orderRequest extends FormRequest
         return [
 
             "name" => 'bail|required|string',
-            "email" => 'bail|required|email|max:255',
+            "email" => 'bail|required|string|email|max:255',
             "phone" => 'bail|required|string|max:11',
             "district_id" => 'bail|required|numeric',
             "upazila_id" => 'bail|required|numeric',

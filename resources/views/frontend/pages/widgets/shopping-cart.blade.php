@@ -99,7 +99,7 @@ cart page
 
 
                                 </ul>
-                                <a href="checkout.html">Proceed to Checkout</a>
+                                <a href="{{ route('cutomer.checkout') }}">Proceed to Checkout</a>
                             </div>
                         </div>
                     </div>

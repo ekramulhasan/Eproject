@@ -12,8 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('billings', function (Blueprint $table) {
+
             $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('mobile');
+            $table->foreignId('district_id');
+            $table->foreignId('upazila_id');
+            $table->longText('address');
+            $table->longText('message')->nullable();
+            $table->string('payment_method')->default('COD');
             $table->timestamps();
+            $table->softDeletes();
+            
         });
     }
 
