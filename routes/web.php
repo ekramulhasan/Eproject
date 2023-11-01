@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\Frontend\Auth\CustomerController;
 use App\Http\Controllers\Backend\CustomerController as CustomerData;
+use App\Http\Controllers\customerProfile;
 use App\Http\Controllers\Frontend\Auth\RegisterController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckOutController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\ProductController;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Testimonial;
+use Whoops\Run;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +49,27 @@ Route::prefix('')->group(function(){
     Route::post('addTocart/{product_slug}',[CartController::class,'addTocart'])->name('addTo.cart');
     Route::get('remove-item/{cart_id}',[CartController::class,'removeFromcart'])->name('remove_item');
 
+    // about
+    Route::get('/about-us',function(){
+
+        return view('frontend.pages.widgets.aboutUs');
+
+    })->name('about-us');
+
+    // FAQ
+    Route::get('/faq',function(){
+
+        return view('frontend.pages.widgets.faq');
+
+    })->name('faq');
+
+    // contract
+    Route::get('/contract',function(){
+
+        return view('frontend.pages.widgets.contract');
+
+    })->name('contract');
+
     //check mail
     Route::get('email',function(){
 
@@ -70,6 +93,10 @@ Route::prefix('')->group(function(){
 
         Route::get('dashboard',[CustomerController::class,'dashboard'])->name('dashboard.page');
         Route::get('logout',[RegisterController::class,'logOut'])->name('logout');
+
+        //customer profile
+        Route::get('/profile-edit/{id}',[customerProfile::class,'profile_edit'])->name('profile-edit');
+        Route::put('/profile-update/{id}',[customerProfile::class,'update'])->name('profile-update');
 
         // coupon apply and remove
         Route::post('cart/coupon-apply',[CartController::class,'couponApply'])->name('coupon.apply');
@@ -100,6 +127,10 @@ Route::prefix('admin/')->group(function(){
         //order and customer index
         Route::get('order',[OrderController::class,'index'])->name('order.data');
         Route::get('customer',[CustomerData::class,'index'])->name('customer.data');
+        Route::get('customer-edit/{id}',[CustomerData::class,'edit'])->name('customer.edit');
+        Route::post('customer-update/{id}',[CustomerData::class,'update'])->name('customer.update');
+        Route::delete('customer-delete/{id}',[CustomerData::class,'delete'])->name('customer.delete');
+
 
 
      //Category Resource
@@ -108,7 +139,7 @@ Route::prefix('admin/')->group(function(){
     Route::resource('products',ProductController::class);
     Route::resource('coupon', CouponController::class);
 
-    
+
 
     });
 

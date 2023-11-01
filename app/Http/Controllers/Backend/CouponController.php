@@ -66,6 +66,7 @@ class CouponController extends Controller
     {
         $coupon_edit = Coupon::find($id);
         return view('backend.coupon.edit',compact('coupon_edit'));
+
     }
 
     /**

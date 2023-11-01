@@ -148,7 +148,7 @@ class ProductController extends Controller
           $img_name = $product_data->id.'.'.$upload_path->getClientOriginalExtension();
           $new_photo_path = $photo_path.$img_name;
 
-          Image::make($upload_path)->resize(150,150)->save(base_path($new_photo_path),40); //40 mean jpg exten convert
+          Image::make($upload_path)->resize(300,300)->save(base_path($new_photo_path),40); //40 mean jpg exten convert
 
           $check = $product_data->update([
 

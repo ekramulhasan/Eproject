@@ -93,7 +93,7 @@ class CheckOutController extends Controller
         Mail::to($request->email)->send(new PurchaseConfirm($order_confirm));
 
         Toastr::success('your order placed successfully','success');
-        return redirect()->route('cart.page');
+        return redirect()->route('dashboard.page');
     }
 
 

@@ -74,10 +74,10 @@ cutomer Index
                                 </button>
                                 <ul class="dropdown-menu">
 
-                                  <li><a class="dropdown-item" href="{{ route('coupon.edit', $value->id) }}"> <i class="fa-regular fa-pen-to-square"></i> Edit</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('customer.edit', $value->id) }}"> <i class="fa-regular fa-pen-to-square"></i> Edit</a></li>
                                   <li>
 
-                                    <form action="{{ route('coupon.destroy', $value->id) }}" method="post">
+                                    <form action="{{ route('customer.delete', $value->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
 

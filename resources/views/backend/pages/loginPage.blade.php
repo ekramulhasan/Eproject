@@ -12,11 +12,16 @@
 
 
     <div class="row">
-        <div class="col-6 m-auto mt-6">
+        <div class="col-5 mx-auto mt-7">
 
             <div class="card">
 
+                <div class="card-header text-center fs-3">
+                    Admin Login
+                  </div>
+
                 <div class="card-body">
+
 
                     <form action="{{ route('admin.loginuser') }}" method="POST">
                         @csrf

@@ -18,13 +18,13 @@
                             <div class="product-icon flex-style">
                                 <ul>
                                     <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
+                                    <li><a href="{{ route('shop.page') }}"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="{{ route('shop.page') }}"><i class="fa fa-shopping-bag"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="product-content">
-                            <h3><a href="single-product.html">Nature Honey</a></h3>
+                            <h3><a href="{{ route('shop.page') }}">Nature Honey</a></h3>
                             <p class="pull-left">$125
 
                             </p>
@@ -45,13 +45,13 @@
                             <div class="product-icon flex-style">
                                 <ul>
                                     <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
+                                    <li><a href="{{ route('shop.page') }}"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="{{ route('shop.page') }}"><i class="fa fa-shopping-bag"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="product-content">
-                            <h3><a href="single-product.html">Olive Oil</a></h3>
+                            <h3><a href="{{ route('shop.page') }}">Olive Oil</a></h3>
                             <p class="pull-left">$125
 
                             </p>
@@ -72,13 +72,13 @@
                             <div class="product-icon flex-style">
                                 <ul>
                                     <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
+                                    <li><a href="{{ route('shop.page') }}"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="{{ route('shop.page') }}"><i class="fa fa-shopping-bag"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="product-content">
-                            <h3><a href="single-product.html">Olive Oil</a></h3>
+                            <h3><a href="{{ route('shop.page') }}">Olive Oil</a></h3>
                             <p class="pull-left">$125
 
                             </p>
@@ -99,13 +99,13 @@
                             <div class="product-icon flex-style">
                                 <ul>
                                     <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
+                                    <li><a href="{{ route('shop.page') }}"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="{{ route('shop.page') }}"><i class="fa fa-shopping-bag"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="product-content">
-                            <h3><a href="single-product.html">Coconut Oil</a></h3>
+                            <h3><a href="{{ route('shop.page') }}">Coconut Oil</a></h3>
                             <p class="pull-left">$125
 
                             </p>

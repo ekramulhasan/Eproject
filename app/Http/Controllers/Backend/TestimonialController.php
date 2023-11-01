@@ -118,7 +118,7 @@ class TestimonialController extends Controller
         $img_name = $client_data->id.'.'.$upload_path->getClientOriginalExtension();
         $new_photo_path = $photo_path.$img_name;
 
-        Image::make($upload_path)->resize(56,56)->save(base_path($new_photo_path),40); //40 mean jpg exten convert
+        Image::make($upload_path)->resize(300,300)->save(base_path($new_photo_path),40); //40 mean jpg exten convert
 
         $check = $client_data->update([
 

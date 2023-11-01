@@ -61,7 +61,7 @@
                                 <td>
 
                                     <img src="{{ asset('assets/uploads/testimonial') }}/{{ $value->client_img }}"
-                                        alt="" class="img-fluid rounded-circle">
+                                        alt="" class="img-fluid rounded-circle h-50 w-50">
 
                                 </td>
                                 <td>{{ $value->updated_at->format('d M Y') }}</td>

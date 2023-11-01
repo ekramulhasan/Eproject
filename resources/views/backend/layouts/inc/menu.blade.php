@@ -66,70 +66,24 @@
         </ul>
       </li>
       <li>
-        <a href="#customers" data-href="Customers.html">
+        <a href="#customers" data-href="{{ route('customer.data') }}">
           <i data-cs-icon="user" class="icon" data-cs-size="18"></i>
           <span class="label">Customers</span>
         </a>
         <ul id="customers">
           <li>
-            <a href="Customers.List.html">
+            <a href="{{ route('customer.data') }}">
               <span class="label">List</span>
             </a>
           </li>
-          <li>
-            <a href="Customers.Detail.html">
-              <span class="label">Detail</span>
-            </a>
-          </li>
+
         </ul>
       </li>
+
       <li>
-        <a href="#storefront" data-href="Storefront.html">
-          <i data-cs-icon="screen" class="icon" data-cs-size="18"></i>
-          <span class="label">Storefront</span>
-        </a>
-        <ul id="storefront">
-          <li>
-            <a href="Storefront.Home.html">
-              <span class="label">Home</span>
-            </a>
-          </li>
-          <li>
-            <a href="Storefront.Filters.html">
-              <span class="label">Filters</span>
-            </a>
-          </li>
-          <li>
-            <a href="Storefront.Categories.html">
-              <span class="label">Categories</span>
-            </a>
-          </li>
-          <li>
-            <a href="Storefront.Detail.html">
-              <span class="label">Detail</span>
-            </a>
-          </li>
-          <li>
-            <a href="Storefront.Cart.html">
-              <span class="label">Cart</span>
-            </a>
-          </li>
-          <li>
-            <a href="Storefront.Checkout.html">
-              <span class="label">Checkout</span>
-            </a>
-          </li>
-          <li>
-            <a href="Storefront.Invoice.html">
-              <span class="label">Invoice</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="Shipping.html">
+        <a href="{{ route('order.data') }}">
           <i data-cs-icon="shipping" class="icon" data-cs-size="18"></i>
-          <span class="label">Shipping</span>
+          <span class="label">Order</span>
         </a>
       </li>
       <li>
@@ -138,12 +92,12 @@
           <span class="label">Coupon</span>
         </a>
       </li>
-      <li>
+      {{-- <li>
         <a href="Settings.html">
           <i data-cs-icon="gear" class="icon" data-cs-size="18"></i>
           <span class="label">Settings</span>
         </a>
-      </li>
+      </li> --}}
     </ul>
   </div>
   <!-- Menu End -->

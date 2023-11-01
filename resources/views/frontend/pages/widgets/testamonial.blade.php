@@ -22,7 +22,7 @@
                                 <p>{{ $value->client_designation }}</p>
                             </div>
                             <div class="test-img2">
-                                <img src="{{ asset('assets/uploads/testimonial') }}/{{ $value->client_img }}" alt="">
+                                <img src="{{ asset('assets/uploads/testimonial') }}/{{ $value->client_img }}" alt="" class="rounded">
                             </div>
                         </div>
 
