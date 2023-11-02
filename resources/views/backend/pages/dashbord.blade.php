@@ -190,7 +190,7 @@ Dashbord
                                                                 @foreach ($value->orderDetails as $item)
                                                                 <tr>
                                                                     <td>{{ $loop->index+1 }}</td>
-                                                                    <td>{{ $item->product->name}}</td>
+                                                                    <td>{{ $item->product->name ?? 'none'}}</td>
                                                                     <td>{{ $item->product_qty }}</td>
                                                                     <td>{{ $item->product_price }}</td>
                                                                     <td>{{ $item->product_price*$item->product_qty }}</td>
@@ -205,8 +205,8 @@ Dashbord
                                                                 <tr class="mt-5">
                                                                     <td colspan="50">
                                                                         <p class="text-primary">Billing Address:</p>
-                                                                        <p>Recipent Name: {{ $value->billing->name }}</p>
-                                                                        <p>Mobile Number: {{ $value->billing->mobile}}</p>
+                                                                        <p><b>Recipent Name:</b> {{ $value->billing->name }}</p>
+                                                                        <p><b>Mobile Number:</b> {{ $value->billing->mobile}}</p>
                                                                         <p>Address: {{ $value->billing->address }}</p>
                                                                         <p>Upazila: {{ $value->billing->upazila->name }} ,
                                                                         Distrcit: {{ $value->billing->district->name }}</p>

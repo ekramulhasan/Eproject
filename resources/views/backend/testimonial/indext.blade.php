@@ -61,7 +61,7 @@
                                 <td>
 
                                     <img src="{{ asset('assets/uploads/testimonial') }}/{{ $value->client_img }}"
-                                        alt="" class="img-fluid rounded-circle h-50 w-50">
+                                        alt="" class="img-fluid rounded-circle h-20 w-20">
 
                                 </td>
                                 <td>{{ $value->updated_at->format('d M Y') }}</td>
@@ -75,11 +75,11 @@
                                         <ul class="dropdown-menu">
 
                                             <li><a class="dropdown-item"
-                                                    href="{{ route('testimonial.edit', $value->client_slug) }}"> <i
+                                                    href="{{ route('testimonial.edit', $value->id) }}"> <i
                                                         class="fa-regular fa-pen-to-square"></i> Edit</a></li>
                                             <li>
 
-                                                <form action="{{ route('testimonial.destroy', $value->client_slug) }}"
+                                                <form action="{{ route('testimonial.destroy', $value->id) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('DELETE')

@@ -76,7 +76,8 @@ class TestimonialController extends Controller
      */
     public function edit(string $id)
     {
-        //
+       $testimonial_data = Testimonial::find($id);
+       return view('backend.testimonial.edit',compact('testimonial_data'));
     }
 
     /**
@@ -84,7 +85,32 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $update_testimonial = Testimonial::find($id);
+
+        $request->validate([
+
+            'client_name' => 'bail|required|string|max:255',
+            'client_designation' => 'bail|required|string|max:255',
+            'client_msg' => 'bail|required|string',
+            'client_img' => 'nullable|image'
+
+        ]);
+
+        $update_testimonial->update([
+
+            'client_name' => $request->client_name,
+            'client_slug' => Str::slug($request->client_name),
+            'client_designation' => $request->client_designation,
+            'client_msg' => $request->client_msg
+
+        ]);
+
+        $this->img_upload($request, $update_testimonial->id);
+
+        Toastr::success('successfully update testimonial');
+        return redirect()->route('testimonial.index');
+
     }
 
     /**
@@ -92,7 +118,10 @@ class TestimonialController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+            Testimonial::find($id)->delete();
+            Toastr::success('successfully delete testimonial');
+            return redirect()->route('testimonial.index');
+
     }
 
 

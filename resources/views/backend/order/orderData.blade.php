@@ -93,7 +93,7 @@ Order Index
                                                                 @foreach ($value->orderDetails as $item)
                                                                 <tr>
                                                                     <td>{{ $loop->index+1 }}</td>
-                                                                    <td>{{ $item->product->name}}</td>
+                                                                    <td>{{ $item->product->name ?? 'none' }}</td>
                                                                     <td>{{ $item->product_qty }}</td>
                                                                     <td>{{ $item->product_price }}</td>
                                                                     <td>{{ $item->product_price*$item->product_qty }}</td>
@@ -124,7 +124,7 @@ Order Index
 
 
                                     </div>
-                                    
+
                                     <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 

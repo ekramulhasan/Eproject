@@ -25,7 +25,7 @@
  <script src="{{ asset('assets/backend') }}/js/scripts.js"></script>
 
  <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
- <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+ <script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
  {!! Toastr::message() !!}
 
  @stack('admin_script')
