@@ -90,38 +90,49 @@
                     <ul class="search-cart-wrapper d-flex">
                         <li class="search-tigger"><a href="javascript:void(0);"><i class="flaticon-search"></i></a></li>
                         <li>
-                            <a href="javascript:void(0);"><i class="flaticon-like"></i> <span>2</span></a>
+                            <a href="javascript:void(0);"><i class="flaticon-like"></i> <span>
+                                @php
+                                $item = \Cart::getContent();
+                                echo $item->count();
+                                @endphp
+                            </span></a>
                             <ul class="cart-wrap dropdown_style">
+
+
+                                @php
+                                    $items = \Cart::getContent();
+                                    $subTotal = \Cart::getSubTotal();
+                                @endphp
+
+                                @foreach ($items as $value)
+
                                 <li class="cart-items">
                                     <div class="cart-img">
-                                        <img src="{{ asset('assets/frontend') }}/images/cart/1.jpg" alt="">
+                                        <img src="{{ asset('assets/uploads/products') }}/{{ $value->attributes->product_img }}" alt="" class="img-fluid rounded" style="width: 50px">
                                     </div>
                                     <div class="cart-content">
-                                        <a href="cart.html">Pure Nature Product</a>
-                                        <span>QTY : 1</span>
-                                        <p>$35.00</p>
-                                        <i class="fa fa-times"></i>
+                                        <a href="cart.html">{{ $value->name }}</a>
+                                        <span>QTY : {{ $value->quantity }}</span>
+                                        <p>${{ $value->price*$value->quantity }}</p>
+                                        <a href="{{ route('remove_item',[$value->id]) }}"><i class="fa fa-times"></i></a>
                                     </div>
                                 </li>
-                                <li class="cart-items">
-                                    <div class="cart-img">
-                                        <img src="{{ asset('assets/frontend') }}/images/cart/3.jpg" alt="">
-                                    </div>
-                                    <div class="cart-content">
-                                        <a href="cart.html">Pure Nature Product</a>
-                                        <span>QTY : 1</span>
-                                        <p>$35.00</p>
-                                        <i class="fa fa-times"></i>
-                                    </div>
-                                </li>
-                                <li>Subtotol: <span class="pull-right">$70.00</span></li>
+
+                                @endforeach
+
+                                <li>Subtotol: <span class="pull-right">$ {{ $subTotal }}</span></li>
                                 <li>
                                     <button>Check Out</button>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="javascript:void(0);"><i class="flaticon-shop"></i> <span>3</span></a>
+                            <a href="javascript:void(0);"><i class="flaticon-shop"></i> <span>
+                                @php
+                                    $item = \Cart::getContent();
+                                    echo $item->count();
+                                @endphp
+                                </span></a>
                             <ul class="cart-wrap dropdown_style">
 
                                 @php
